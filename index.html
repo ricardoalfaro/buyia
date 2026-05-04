@@ -19,15 +19,15 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        ink: '#111827',
-                        line: '#DFE6F2',
+                        ink: '#2C3947',
+                        line: '#547A95',
                         brand: {
-                            primary: '#2F6BFF',
-                            green: '#18BFA6',
-                            mint: '#E5FAF6',
-                            yellow: '#FFD166',
-                            coral: '#FF6B4A',
-                            cloud: '#F5F8FF',
+                            primary: '#547A95',
+                            green: '#547A95',
+                            mint: '#E8EDF2',
+                            yellow: '#C2A56D',
+                            coral: '#C2A56D',
+                            cloud: '#E8EDF2',
                         }
                     },
                     boxShadow: {
@@ -44,25 +44,52 @@
         }
 
         body {
-            background: #FAFBF7;
+            background: #E8EDF2;
         }
 
         .hero-shell {
-            min-height: 92vh;
+            min-height: 100vh;
             background:
-                linear-gradient(180deg, rgba(250, 251, 247, 0.82) 0%, rgba(250, 251, 247, 0.70) 45%, rgba(250, 251, 247, 0.94) 100%),
-                radial-gradient(circle at 78% 8%, rgba(255, 107, 74, 0.18), transparent 20rem),
-                url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg');
-            background-size: cover;
+                linear-gradient(rgba(44,57,71,0.09) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44,57,71,0.09) 1px, transparent 1px),
+                radial-gradient(circle at 50% 22%, rgba(84,122,149,0.18), transparent 26rem),
+                radial-gradient(circle at 14% 82%, rgba(194,165,109,0.20), transparent 20rem),
+                #E8EDF2;
+            background-size: 160px 160px, 160px 160px, cover, cover;
             background-position: center;
         }
 
         .mesh-grid {
-            background-image:
-                linear-gradient(rgba(17,24,39,0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(17,24,39,0.035) 1px, transparent 1px);
-            background-size: 48px 48px;
-            mask-image: linear-gradient(to bottom, black, transparent 82%);
+            overflow: hidden;
+            opacity: 0.28;
+            mask-image: linear-gradient(to bottom, black, rgba(0,0,0,0.84) 68%, transparent 96%);
+        }
+
+        .mesh-grid::before,
+        .mesh-grid::after {
+            content: "";
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #ffffff;
+            box-shadow:
+                90px 40px 0 rgba(84,122,149,0.65),
+                220px 160px 0 rgba(194,165,109,0.55),
+                410px 90px 0 rgba(44,57,71,0.42),
+                680px 240px 0 rgba(84,122,149,0.48),
+                920px 130px 0 rgba(194,165,109,0.42),
+                1120px 310px 0 rgba(44,57,71,0.36);
+            opacity: 0.5;
+            filter: drop-shadow(0 0 10px currentColor);
+            animation: particleRun 9s linear infinite;
+        }
+
+        .mesh-grid::after {
+            animation-duration: 13s;
+            animation-delay: -5s;
+            transform: translate(180px, 130px);
+            opacity: 0.52;
         }
 
         .scene-card {
@@ -71,74 +98,135 @@
             box-shadow: 0 24px 80px rgba(17, 24, 39, 0.12);
         }
 
+        #site-nav {
+            transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+
+        #site-nav.is-scrolled {
+            border-bottom-color: rgba(44,57,71,0.18);
+            background: rgba(232, 237, 242, 0.88);
+            box-shadow: 0 16px 44px rgba(44, 57, 71, 0.12);
+        }
+
         .dashboard-preview {
-            border: 1px solid rgba(223, 230, 242, 0.9);
-            background: rgba(255, 255, 255, 0.84);
+            border: 2px solid rgba(44, 57, 71, 0.18);
+            background: rgba(232, 237, 242, 0.82);
+            box-shadow: 0 28px 90px rgba(44, 57, 71, 0.12);
+            backdrop-filter: blur(18px);
+        }
+
+        .hero-phone {
+            width: min(360px, 78vw);
+            border: 13px solid #05070D;
+            border-radius: 46px;
+            background: #05070D;
+            box-shadow:
+                0 38px 100px rgba(0, 0, 0, 0.45),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-phone::before,
+        .demo-phone::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            z-index: 4;
+            width: 96px;
+            height: 9px;
+            transform: translateX(-50%);
+            border-radius: 999px;
+            background: #05070D;
+        }
+
+        .whatsapp-header {
+            background: #075E54;
+            color: #fff;
+        }
+
+        .whatsapp-chat {
+            background:
+                radial-gradient(circle at 18px 18px, rgba(255,255,255,0.045) 1.8px, transparent 2px) 0 0 / 38px 38px,
+                radial-gradient(circle at 12px 28px, rgba(255,255,255,0.04) 1.4px, transparent 2px) 0 0 / 54px 54px,
+                #0B141A;
+        }
+
+        .whatsapp-bubble {
+            max-width: 86%;
+            padding: 10px 12px 6px;
+            border-radius: 13px;
+            font-size: 0.78rem;
+            line-height: 1.35;
+            color: #F1F5F9;
+        }
+
+        .whatsapp-bubble.bot {
+            margin-right: auto;
+            background: #1F2C34;
+            border-top-left-radius: 4px;
+        }
+
+        .whatsapp-bubble.user {
+            margin-left: auto;
+            background: #005C4B;
+            border-top-right-radius: 4px;
+        }
+
+        .wa-link-row {
+            margin: 10px -12px -6px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 12px;
+            color: #35D46F;
+            font-weight: 800;
+            text-align: center;
         }
 
         .hand-demo {
             min-height: 620px;
             position: relative;
             overflow: hidden;
-            border-radius: 2rem;
-            background:
-                linear-gradient(135deg, rgba(17, 24, 39, 0.24), rgba(17, 24, 39, 0.68)),
-                url('https://images.pexels.com/photos/5081922/pexels-photo-5081922.jpeg');
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 26px 90px rgba(0, 0, 0, 0.28);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            box-shadow: none;
         }
 
         .demo-phone {
-            position: absolute;
-            right: clamp(16px, 8vw, 84px);
-            top: 50%;
-            width: min(430px, 74vw);
-            transform: translateY(-50%) rotate(-4deg);
-            border: 12px solid #111827;
-            border-radius: 38px;
+            position: relative;
+            z-index: 2;
+            width: min(380px, 76vw);
+            transform: none;
+            border: 12px solid #05070D;
+            border-radius: 42px;
             overflow: hidden;
             background: #ffffff;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
-        }
-
-        .demo-phone::before {
-            content: "";
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            width: 88px;
-            height: 7px;
-            transform: translateX(-50%);
-            border-radius: 999px;
-            background: #111827;
-            z-index: 3;
+            box-shadow:
+                0 34px 90px rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(255, 255, 255, 0.10);
         }
 
         .demo-phone-screen {
-            height: 560px;
+            height: 600px;
             overflow: hidden;
-            border-radius: 24px;
+            border-radius: 28px;
         }
 
         @media (max-width: 768px) {
             .hand-demo {
                 min-height: 680px;
-                background-position: 44% center;
             }
 
             .demo-phone {
-                right: 50%;
-                top: 54%;
-                transform: translate(50%, -50%) rotate(-3deg);
-                width: min(350px, 86vw);
+                width: min(360px, 82vw);
             }
         }
 
         .chat-bubble {
             max-width: 86%;
-            padding: 12px 14px;
-            border-radius: 16px;
+            padding: 12px 14px 8px;
+            border-radius: 14px;
             font-size: 0.82rem;
             line-height: 1.38;
             margin-bottom: 10px;
@@ -149,22 +237,47 @@
 
         .chat-bubble.user {
             margin-left: auto;
-            background: #E5FAF6;
-            color: #10201d;
-            border-bottom-right-radius: 4px;
+            background: #005C4B;
+            color: #F8FAFC;
+            border-top-right-radius: 4px;
         }
 
         .chat-bubble.bot {
             margin-right: auto;
-            background: #ffffff;
-            color: #111827;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+            background: #1F2C34;
+            color: #F8FAFC;
+            border-top-left-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
         }
 
         .chat-bubble.bot-highlight {
-            border: 1px solid #9BE8DA;
-            background: #F0FFFB;
+            border: 1px solid rgba(53, 212, 111, 0.36);
+            background: #203932;
+        }
+
+        .chat-link-preview {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            background: #151F26;
+            color: #D5DEE7;
+            font-weight: 700;
+        }
+
+        .chat-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 12px -14px -12px;
+            padding: 12px 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #35D46F;
+            font-size: 0.95rem;
+            font-weight: 800;
         }
 
         .delay-1 { animation-delay: 0.1s; }
@@ -180,16 +293,149 @@
             }
         }
 
+        @keyframes spectrumShift {
+            0% { filter: hue-rotate(0deg) saturate(1.15); }
+            100% { filter: hue-rotate(360deg) saturate(1.35); }
+        }
+
+        @keyframes particleRun {
+            0% { translate: -120px -80px; }
+            50% { translate: 260px 180px; }
+            100% { translate: 620px 420px; }
+        }
+
         .product-line {
-            background: linear-gradient(90deg, #2F6BFF, #18BFA6, #FFD166);
+            background: linear-gradient(90deg, #2C3947, #547A95, #C2A56D);
         }
 
         .marquee {
             mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
         }
 
+        .audience-marquee {
+            margin-top: -5.5rem;
+            background: linear-gradient(180deg, rgba(232,237,242,0), rgba(232,237,242,0.82) 42%, #E8EDF2 100%);
+        }
+
+        .marquee-track {
+            width: max-content;
+            animation: marqueeRight 28s linear infinite;
+        }
+
+        .marquee-word {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding-inline: 1.35rem;
+            color: rgba(44, 57, 71, 0.78);
+            font-size: clamp(1.15rem, 2.1vw, 2rem);
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-shadow: none;
+        }
+
+        .marquee-word::after {
+            content: "";
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 999px;
+            background: currentColor;
+            opacity: 0.56;
+        }
+
+        @keyframes marqueeRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
         .flow-line {
-            background: linear-gradient(90deg, transparent, #2F6BFF, #18BFA6, transparent);
+            background: linear-gradient(90deg, transparent, #547A95, #C2A56D, transparent);
+        }
+
+        .orb-section {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(44,57,71,0.075) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44,57,71,0.075) 1px, transparent 1px),
+                #E8EDF2;
+            background-size: 160px 160px, 160px 160px, cover;
+        }
+
+        .orb-section-light {
+            background:
+                linear-gradient(rgba(44,57,71,0.075) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44,57,71,0.075) 1px, transparent 1px),
+                #E8EDF2;
+            background-size: 160px 160px, 160px 160px, cover;
+        }
+
+        .glass-card {
+            border: 2px solid rgba(44, 57, 71, 0.18);
+            background: rgba(232, 237, 242, 0.74);
+            box-shadow: 0 24px 80px rgba(44, 57, 71, 0.10);
+            backdrop-filter: blur(18px);
+        }
+
+        .glow-panel {
+            background:
+                radial-gradient(ellipse 56% 48% at 24% 0%, rgba(84, 122, 149, 0.14), transparent 62%),
+                rgba(232, 237, 242, 0.76);
+        }
+
+        .borderless-panel {
+            border: 0;
+        }
+
+        .hero-shell,
+        .orb-section,
+        .orb-section-light {
+            color: #2C3947;
+        }
+
+        .hero-shell [class*="text-white"],
+        .orb-section [class*="text-white"],
+        .orb-section-light [class*="text-white"] {
+            color: #2C3947 !important;
+        }
+
+        .hero-shell [class*="border-white"],
+        .orb-section [class*="border-white"],
+        .orb-section-light [class*="border-white"] {
+            border-color: rgba(44, 57, 71, 0.2) !important;
+        }
+
+        .hero-shell .bg-ink,
+        .orb-section .bg-ink,
+        .orb-section-light .bg-ink {
+            background-color: #2C3947 !important;
+            color: #E8EDF2 !important;
+        }
+
+        .hero-shell .bg-ink [class*="text-white"],
+        .orb-section .bg-ink [class*="text-white"],
+        .orb-section-light .bg-ink [class*="text-white"] {
+            color: #E8EDF2 !important;
+        }
+
+        .whatsapp-header,
+        .whatsapp-header [class*="text-white"],
+        .whatsapp-chat [class*="text-white"] {
+            color: #E8EDF2 !important;
+        }
+
+        footer {
+            background: #E8EDF2 !important;
+            color: #2C3947 !important;
+        }
+
+        footer [class*="text-white"] {
+            color: #2C3947 !important;
+        }
+
+        footer [class*="border-white"] {
+            border-color: rgba(44, 57, 71, 0.2) !important;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -203,37 +449,37 @@
     </style>
 </head>
 <body class="font-sans text-ink antialiased overflow-x-hidden">
-    <nav class="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-[#FAFBF7]/90 backdrop-blur-xl">
+    <nav id="site-nav" class="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-transparent backdrop-blur-xl">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
             <a href="#" class="flex items-center gap-3 text-ink" aria-label="Buyia inicio">
-                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-brand-primary">
+                <span class="flex h-9 w-9 items-center justify-center rounded-none bg-ink text-[#E8EDF2]">
                     <i class="fa-solid fa-bolt text-sm"></i>
                 </span>
                 <span class="text-xl font-extrabold tracking-tight">Buyia</span>
             </a>
 
             <div class="hidden items-center gap-8 md:flex">
-                <a href="#plataforma" class="text-sm font-bold text-ink/70 transition hover:text-ink">Plataforma</a>
-                <a href="#broker" class="text-sm font-bold text-ink/70 transition hover:text-ink">Modelo broker</a>
-                <a href="#impacto" class="text-sm font-bold text-ink/70 transition hover:text-ink">Impacto</a>
-                <a href="#demo" class="text-sm font-bold text-ink/70 transition hover:text-ink">Demo</a>
+                <a href="#plataforma" class="text-sm font-extrabold text-ink/70 transition hover:text-ink">Plataforma</a>
+                <a href="#broker" class="text-sm font-extrabold text-ink/70 transition hover:text-ink">Modelo broker</a>
+                <a href="#impacto" class="text-sm font-extrabold text-ink/70 transition hover:text-ink">Impacto</a>
+                <a href="#demo" class="text-sm font-extrabold text-ink/70 transition hover:text-ink">Demo</a>
             </div>
 
-            <a href="#contacto" class="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#0B1220] md:inline-flex">
+            <a href="#contacto" class="hidden rounded-none bg-[#C2A56D] px-5 py-2.5 text-sm font-black text-[#2C3947] transition hover:bg-[#B89757] md:inline-flex">
                 Pedir demo
             </a>
 
-            <button id="mobile-menu-btn" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/20 text-ink md:hidden" aria-label="Abrir menú">
+            <button id="mobile-menu-btn" class="inline-flex h-10 w-10 items-center justify-center rounded-none border-2 border-ink/30 text-ink md:hidden" aria-label="Abrir menú">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden border-t border-ink/10 bg-[#FAFBF7] px-5 py-5 md:hidden">
+        <div id="mobile-menu" class="hidden border-t-2 border-ink/20 bg-[#E8EDF2] px-5 py-5 md:hidden">
             <div class="flex flex-col gap-4">
-                <a href="#plataforma" class="font-bold text-ink/80">Plataforma</a>
-                <a href="#broker" class="font-bold text-ink/80">Modelo broker</a>
-                <a href="#impacto" class="font-bold text-ink/80">Impacto</a>
-                <a href="#demo" class="font-bold text-ink/80">Demo</a>
-                <a href="#contacto" class="rounded-full bg-ink px-5 py-3 text-center font-bold text-white">Pedir demo</a>
+                <a href="#plataforma" class="font-black text-ink/80">Plataforma</a>
+                <a href="#broker" class="font-black text-ink/80">Modelo broker</a>
+                <a href="#impacto" class="font-black text-ink/80">Impacto</a>
+                <a href="#demo" class="font-black text-ink/80">Demo</a>
+                <a href="#contacto" class="rounded-none bg-[#C2A56D] px-5 py-3 text-center font-black text-[#2C3947]">Pedir demo</a>
             </div>
         </div>
     </nav>
@@ -241,64 +487,101 @@
     <main>
         <section class="hero-shell relative overflow-hidden pt-28 text-ink lg:pt-32">
             <div class="mesh-grid absolute inset-0"></div>
-            <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#FAFBF7] to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#E8EDF2] to-transparent"></div>
 
-            <div class="relative mx-auto max-w-7xl px-5 pb-16 lg:px-8">
-                <div class="mx-auto max-w-5xl text-center">
-                    <div class="mb-6 text-sm font-black uppercase tracking-[0.18em] text-ink/60">
+            <div class="relative mx-auto flex min-h-[calc(100vh-7rem)] max-w-7xl flex-col items-center justify-center px-5 pb-24 text-center lg:px-8">
+                <div class="max-w-5xl">
+                    <div class="mb-8 flex items-center justify-center gap-4 text-xs font-black uppercase tracking-[0.24em] text-ink/60">
+                        <span class="h-0.5 w-8 bg-ink/40"></span>
                         Canal externo de ventas para e-commerce
+                        <span class="h-0.5 w-8 bg-ink/40"></span>
                     </div>
-                    <h1 class="mx-auto max-w-5xl text-5xl font-black leading-[0.96] tracking-tight sm:text-6xl lg:text-7xl">
-                        Convierte conversaciones en ingresos medibles.
+                    <h1 class="text-6xl font-black uppercase leading-[0.88] tracking-tight sm:text-7xl lg:text-8xl">
+                        Convierte conversaciones en <span class="text-[#547A95]">ingresos medibles.</span>
                     </h1>
-                    <p class="mx-auto mt-7 max-w-3xl text-lg font-medium leading-8 text-ink/75 sm:text-xl">
+                    <p class="mx-auto mt-10 max-w-2xl text-base font-bold leading-8 text-ink/70 sm:text-lg">
                         Buyia actúa como broker conversacional: capta intención de compra en WhatsApp, recomienda productos del catálogo, arma carritos y deriva al checkout de tu e-commerce.
                     </p>
-                    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                        <a href="#contacto" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-base font-bold text-white shadow-button transition hover:-translate-y-0.5 hover:bg-[#0B1220] sm:w-auto">
+                    <div class="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
+                        <a href="#contacto" class="inline-flex w-full items-center justify-center rounded-none bg-[#C2A56D] px-9 py-4 text-base font-black uppercase text-[#2C3947] transition hover:bg-[#B89757] sm:w-auto">
                             Pedir demo comercial
-                            <i class="fa-solid fa-arrow-right text-sm"></i>
                         </a>
-                        <a href="#broker" class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink/20 bg-white/60 px-7 py-4 text-base font-bold text-ink transition hover:bg-white sm:w-auto">
-                            Ver modelo de venta
+                        <a href="#broker" class="inline-flex w-full items-center justify-center gap-3 border-b-2 border-ink px-2 py-4 text-sm font-black uppercase text-ink/70 transition hover:text-ink sm:w-auto">
+                            Ver cómo funciona
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="relative mx-auto mt-14 grid max-w-6xl gap-4 lg:grid-cols-[1.08fr_0.92fr]">
-                    <div class="dashboard-preview rounded-[2rem] p-4 sm:p-5">
-                        <div class="rounded-[1.5rem] bg-white p-4 text-ink">
-                            <div class="mb-5 flex items-center justify-between border-b border-line pb-4">
+        <section class="audience-marquee relative z-10 overflow-hidden pb-12 pt-24">
+            <div class="marquee overflow-hidden">
+                <div class="marquee-track flex whitespace-nowrap">
+                    <span class="marquee-word">Retail</span>
+                    <span class="marquee-word">Marketplace</span>
+                    <span class="marquee-word">Moda</span>
+                    <span class="marquee-word">Deportes</span>
+                    <span class="marquee-word">Tecnología</span>
+                    <span class="marquee-word">Hogar</span>
+                    <span class="marquee-word">Belleza</span>
+                    <span class="marquee-word">Electro</span>
+                    <span class="marquee-word">Retail</span>
+                    <span class="marquee-word">Marketplace</span>
+                    <span class="marquee-word">Moda</span>
+                    <span class="marquee-word">Deportes</span>
+                    <span class="marquee-word">Tecnología</span>
+                    <span class="marquee-word">Hogar</span>
+                    <span class="marquee-word">Belleza</span>
+                    <span class="marquee-word">Electro</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="orb-section py-16 text-white lg:py-24">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+                    <div>
+                        <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-white/50">Pipeline Buyia</p>
+                        <h2 class="text-5xl font-black uppercase leading-none tracking-tight text-[#2C3947] sm:text-6xl">Ventas asistidas en tiempo real, listas para medir.</h2>
+                        <p class="mt-6 text-lg leading-8 text-white/68">
+                            Sigue intención, carritos y ventas derivadas desde un canal externo sin perder atribución comercial.
+                        </p>
+                    </div>
+
+                    <div class="dashboard-preview rounded-none p-4 sm:p-5">
+                        <div class="rounded-none bg-white/95 p-4 text-ink">
+                            <div class="mb-5 flex items-center justify-between border-b border-ink/10 pb-4">
                                 <div>
                                     <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Pipeline Buyia</p>
-                                    <h2 class="mt-1 text-xl font-black tracking-tight">Ventas asistidas en tiempo real</h2>
+                                    <h3 class="mt-1 text-xl font-black tracking-tight">Ventas asistidas en tiempo real</h3>
                                 </div>
-                                <div class="rounded-full bg-brand-mint px-3 py-1 text-sm font-bold text-teal-800">Activo</div>
+                                <div class="rounded-none bg-ink px-3 py-1 text-sm font-bold text-white">Activo</div>
                             </div>
 
                             <div class="grid gap-4 md:grid-cols-3">
-                                <div class="rounded-2xl border border-line bg-white p-4">
+                                <div class="rounded-none border border-ink/10 bg-white p-4">
                                     <p class="text-sm font-semibold text-slate-500">Intención detectada</p>
                                     <p class="mt-3 text-3xl font-black">1.284</p>
-                                    <div class="product-line mt-5 h-2 rounded-full"></div>
+                                    <div class="product-line mt-5 h-2 rounded-none"></div>
                                 </div>
-                                <div class="rounded-2xl border border-line bg-white p-4">
+                                <div class="rounded-none border border-ink/10 bg-white p-4">
                                     <p class="text-sm font-semibold text-slate-500">Carritos creados</p>
                                     <p class="mt-3 text-3xl font-black">486</p>
                                     <div class="mt-5 flex gap-1">
-                                        <span class="h-2 flex-1 rounded-full bg-ink"></span>
-                                        <span class="h-2 flex-1 rounded-full bg-brand-green"></span>
-                                        <span class="h-2 flex-1 rounded-full bg-brand-yellow"></span>
+                                        <span class="h-2 flex-1 rounded-none bg-ink"></span>
+                                        <span class="h-2 flex-1 rounded-none bg-slate-400"></span>
+                                        <span class="h-2 flex-1 rounded-none bg-slate-300"></span>
                                     </div>
                                 </div>
-                                <div class="rounded-2xl border border-line bg-ink p-4 text-white">
+                                <div class="rounded-none border border-ink bg-ink p-4 text-white">
                                     <p class="text-sm font-semibold text-white/60">Ventas derivadas</p>
                                     <p class="mt-3 text-3xl font-black">$42.8M</p>
-                                    <p class="mt-4 text-xs font-semibold text-brand-primary">+28% vs. canal base</p>
+                                    <p class="mt-4 text-xs font-semibold text-white/60">+28% vs. canal base</p>
                                 </div>
                             </div>
 
-                            <div class="mt-4 rounded-2xl border border-line p-4">
+                            <div class="mt-4 rounded-none border border-ink/10 p-4">
                                 <div class="mb-4 flex items-center justify-between">
                                     <p class="text-sm font-bold">Productos con mayor oportunidad</p>
                                     <p class="text-xs font-bold text-ink">Actualizado ahora</p>
@@ -306,49 +589,15 @@
                                 <div class="space-y-3">
                                     <div class="grid grid-cols-[1fr_auto] items-center gap-3">
                                         <span class="text-sm font-semibold">Zapatillas urbanas</span>
-                                        <span class="rounded-full bg-brand-mint px-3 py-1 text-xs font-bold text-teal-800">Alta intención</span>
+                                        <span class="rounded-none bg-ink px-3 py-1 text-xs font-bold text-white">Alta intención</span>
                                     </div>
-                                    <div class="h-2 rounded-full bg-brand-cloud"><div class="h-2 w-[82%] rounded-full bg-ink"></div></div>
+                                    <div class="h-2 rounded-none bg-slate-100"><div class="h-2 w-[82%] rounded-none bg-ink"></div></div>
                                     <div class="grid grid-cols-[1fr_auto] items-center gap-3">
                                         <span class="text-sm font-semibold">Mochilas premium</span>
-                                        <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">Cross-sell</span>
+                                        <span class="rounded-none bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">Cross-sell</span>
                                     </div>
-                                    <div class="h-2 rounded-full bg-brand-cloud"><div class="h-2 w-[64%] rounded-full bg-brand-coral"></div></div>
+                                    <div class="h-2 rounded-none bg-slate-100"><div class="h-2 w-[64%] rounded-none bg-slate-400"></div></div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="scene-card rounded-[2rem] p-4 sm:p-5">
-                        <div class="overflow-hidden rounded-[1.5rem] border border-ink/10 bg-[#F4F7F5] shadow-panel">
-                            <div class="flex items-center gap-3 bg-ink px-4 py-4 text-white">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-primary text-white">
-                                    <i class="fa-solid fa-bolt"></i>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <p class="truncate text-sm font-bold">Buyia para Retail</p>
-                                    <p class="text-xs text-white/70">Broker de ventas en línea</p>
-                                </div>
-                                <i class="fa-solid fa-ellipsis-vertical text-white/70"></i>
-                            </div>
-                            <div class="flex h-[390px] flex-col p-4">
-                                <div class="chat-bubble user delay-1">Busco una chaqueta impermeable para viajar.</div>
-                                <div class="chat-bubble bot delay-2">Tengo 4 opciones según clima, presupuesto y stock disponible. ¿Prefieres liviana o térmica?</div>
-                                <div class="chat-bubble user delay-3">Liviana, talla M. Que llegue antes del viernes.</div>
-                                <div class="chat-bubble bot delay-4">
-                                    Recomiendo esta: despacho express disponible y 18% más barata que la alternativa premium.
-                                    <div class="mt-3 rounded-xl border border-line bg-white p-3">
-                                        <div class="mb-3 h-20 rounded-lg bg-gradient-to-br from-slate-200 via-white to-brand-mint"></div>
-                                        <div class="flex items-end justify-between">
-                                            <div>
-                                                <p class="text-xs font-bold text-slate-500">SKU 8841-M</p>
-                                                <p class="font-black">$69.990</p>
-                                            </div>
-                                            <span class="rounded-full bg-brand-primary px-3 py-1 text-xs font-bold text-white">En stock</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chat-bubble bot bot-highlight delay-5">Carrito listo. Te llevo al pago seguro del comercio.</div>
                             </div>
                         </div>
                     </div>
@@ -356,102 +605,99 @@
             </div>
         </section>
 
-        <section class="border-y border-line bg-[#FAFBF7] py-8">
-            <div class="marquee mx-auto max-w-7xl overflow-hidden px-5 lg:px-8">
-                <div class="grid grid-cols-2 gap-4 text-center text-sm font-black uppercase tracking-[0.16em] text-ink/40 sm:grid-cols-4 lg:grid-cols-6">
-                    <span>Retail</span>
-                    <span>Marketplace</span>
-                    <span>Moda</span>
-                    <span>Deportes</span>
-                    <span>Tecnología</span>
-                    <span>Hogar</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="plataforma" class="bg-[#FAFBF7] py-24 lg:py-32">
+        <section id="plataforma" class="orb-section-light py-24 text-white lg:py-32">
             <div class="mx-auto max-w-7xl px-5 lg:px-8">
                 <div class="max-w-3xl">
-                    <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-ink/50">Plataforma</p>
-                    <h2 class="text-4xl font-black tracking-tight sm:text-5xl">Un nuevo punto de venta, conectado a tu operación actual.</h2>
-                    <p class="mt-6 text-lg leading-8 text-slate-600">
+                    <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-white/45">Plataforma</p>
+                    <h2 class="text-5xl font-black uppercase leading-none tracking-tight text-[#2C3947] sm:text-6xl">Un nuevo punto de venta, conectado a tu operación actual.</h2>
+                    <p class="mt-6 text-lg leading-8 text-white/58">
                         Buyia no reemplaza tu e-commerce. Lo potencia como una capa externa de adquisición y conversión para clientes que prefieren comprar conversando.
                     </p>
                 </div>
 
-                <div class="mt-14 grid gap-5 lg:grid-cols-3">
-                    <article class="rounded-[1.75rem] border border-line bg-white p-7">
-                        <i class="fa-solid fa-comments-dollar mb-8 block text-6xl text-brand-primary"></i>
-                        <h3 class="text-2xl font-black tracking-tight">Venta asistida por intención</h3>
-                        <p class="mt-4 leading-7 text-slate-600">Detecta necesidades, presupuesto, urgencia y preferencias para recomendar productos relevantes sin obligar al usuario a navegar categorías.</p>
+                <div class="mt-14 grid gap-10 lg:grid-cols-3">
+                    <article class="border-t border-white/10 pt-8">
+                        <svg class="mb-8 h-16 w-16 text-white/74" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                            <path d="M13 24.5C13 16.5 20.3 10 29.4 10h5.2C43.7 10 51 16.5 51 24.5S43.7 39 34.6 39h-2.8L20 48v-10.8c-4.3-2.6-7-7.2-7-12.7Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M29 20v16M23 28h12.5c3.2 0 5.5-1.8 5.5-4.3S38.7 19.5 35.5 19.5H29" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="text-2xl font-black tracking-tight text-[#C2A56D]">Venta asistida por intención</h3>
+                        <p class="mt-4 leading-7 text-white/55">Detecta necesidades, presupuesto, urgencia y preferencias para recomendar productos relevantes sin obligar al usuario a navegar categorías.</p>
                     </article>
-                    <article class="rounded-[1.75rem] border border-ink bg-ink p-7 text-white">
-                        <i class="fa-solid fa-route mb-8 block text-6xl text-brand-primary"></i>
-                        <h3 class="text-2xl font-black tracking-tight">Broker entre cliente y comercio</h3>
-                        <p class="mt-4 leading-7 text-white/70">Buyia abre demanda fuera del sitio, arma el carrito y entrega el cierre al checkout, inventario y medios de pago del comercio.</p>
+                    <article class="border-t border-white/10 pt-8">
+                        <svg class="mb-8 h-16 w-16 text-white/74" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                            <path d="M15 48c8 0 12-8 17-16s9-16 17-16" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M15 48a6 6 0 1 0 0-12 6 6 0 0 0 0 12ZM49 28a6 6 0 1 0 0-12 6 6 0 0 0 0 12ZM32 38a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="4"/>
+                        </svg>
+                        <h3 class="text-2xl font-black tracking-tight text-[#C2A56D]">Broker entre cliente y comercio</h3>
+                        <p class="mt-4 leading-7 text-white/55">Buyia abre demanda fuera del sitio, arma el carrito y entrega el cierre al checkout, inventario y medios de pago del comercio.</p>
                     </article>
-                    <article class="rounded-[1.75rem] border border-line bg-brand-mint p-7">
-                        <i class="fa-solid fa-chart-simple mb-8 block text-6xl text-brand-green"></i>
-                        <h3 class="text-2xl font-black tracking-tight">Aprendizaje comercial continuo</h3>
-                        <p class="mt-4 leading-7 text-slate-700">Cada conversación deja señales para mejorar recomendaciones, bundles, campañas, precios y recuperación de demanda no convertida.</p>
+                    <article class="border-t border-white/10 pt-8">
+                        <svg class="mb-8 h-16 w-16 text-white/74" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                            <path d="M14 50V31M32 50V14M50 50V24" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M10 50h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M21 21l7-7 6 6 9-9" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 class="text-2xl font-black tracking-tight text-[#C2A56D]">Aprendizaje comercial continuo</h3>
+                        <p class="mt-4 leading-7 text-white/55">Cada conversación deja señales para mejorar recomendaciones, bundles, campañas, precios y recuperación de demanda no convertida.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="broker" class="bg-white py-24 lg:py-32">
+        <section id="broker" class="orb-section py-24 text-white lg:py-32">
             <div class="mx-auto max-w-7xl px-5 lg:px-8">
                 <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
                     <div>
-                        <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-ink/50">Modelo broker</p>
-                        <h2 class="text-4xl font-black tracking-tight sm:text-5xl">El cliente conversa. Buyia coordina. Tu comercio vende.</h2>
-                        <p class="mt-6 text-lg leading-8 text-slate-600">
+                        <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-white/50">Modelo broker</p>
+                        <h2 class="text-5xl font-black uppercase leading-none tracking-tight text-[#2C3947] sm:text-6xl">El cliente conversa. Buyia coordina. Tu comercio vende.</h2>
+                        <p class="mt-6 text-lg leading-8 text-white/68">
                             Diseñado para comercios medianos y grandes que quieren abrir un canal adicional sin rediseñar su operación desde cero.
                         </p>
-                        <div class="mt-8 flex flex-col gap-3">
-                            <div class="flex gap-3 rounded-2xl border border-line bg-[#FAFBF7] p-4">
+                        <div class="mt-8 flex flex-col gap-5">
+                            <div class="flex gap-4">
                                 <i class="fa-solid fa-check mt-1 text-brand-green"></i>
-                                <p class="font-semibold">Se integra con catálogo, stock, reglas comerciales y checkout existente.</p>
+                                <p class="font-semibold text-white/82">Se integra con catálogo, stock, reglas comerciales y checkout existente.</p>
                             </div>
-                            <div class="flex gap-3 rounded-2xl border border-line bg-[#FAFBF7] p-4">
+                            <div class="flex gap-4">
                                 <i class="fa-solid fa-check mt-1 text-brand-green"></i>
-                                <p class="font-semibold">Puede operar como canal de adquisición, remarketing o atención comercial.</p>
+                                <p class="font-semibold text-white/82">Puede operar como canal de adquisición, remarketing o atención comercial.</p>
                             </div>
-                            <div class="flex gap-3 rounded-2xl border border-line bg-[#FAFBF7] p-4">
+                            <div class="flex gap-4">
                                 <i class="fa-solid fa-check mt-1 text-brand-green"></i>
-                                <p class="font-semibold">Mide intención, carritos, derivaciones, conversión e ingresos atribuibles.</p>
+                                <p class="font-semibold text-white/82">Mide intención, carritos, derivaciones, conversión e ingresos atribuibles.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="rounded-[2rem] border border-line bg-brand-cloud p-5 shadow-panel">
+                    <div class="glass-card glow-panel borderless-panel rounded-none p-5">
                         <div class="grid gap-4">
-                            <div class="rounded-[1.5rem] border border-line bg-white p-5">
+                            <div class="rounded-none border border-white/10 bg-white/10 p-5">
                                 <div class="flex items-center gap-4">
-                                    <span class="flex h-11 w-11 items-center justify-center rounded-full bg-ink text-lg font-black text-brand-primary">1</span>
+                                    <span class="flex h-11 w-11 items-center justify-center rounded-none bg-white text-lg font-black text-ink">1</span>
                                     <div>
-                                        <h3 class="font-black">Captura demanda conversacional</h3>
-                                        <p class="text-sm text-slate-600">WhatsApp, campañas, QR, email, influencers o tráfico pagado.</p>
+                                        <h3 class="font-black text-white">Captura demanda conversacional</h3>
+                                        <p class="text-sm text-white/62">WhatsApp, campañas, QR, email, influencers o tráfico pagado.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flow-line mx-10 h-1 rounded-full"></div>
-                            <div class="rounded-[1.5rem] border border-line bg-white p-5">
+                            <div class="flow-line mx-10 h-1 rounded-none"></div>
+                            <div class="rounded-none border border-white/10 bg-white/10 p-5">
                                 <div class="flex items-center gap-4">
-                                    <span class="flex h-11 w-11 items-center justify-center rounded-full bg-brand-primary text-lg font-black text-white">2</span>
+                                    <span class="flex h-11 w-11 items-center justify-center rounded-none bg-white text-lg font-black text-ink">2</span>
                                     <div>
-                                        <h3 class="font-black">Recomienda y configura la compra</h3>
-                                        <p class="text-sm text-slate-600">Filtra por necesidad, disponibilidad, margen, envío y promociones.</p>
+                                        <h3 class="font-black text-white">Recomienda y configura la compra</h3>
+                                        <p class="text-sm text-white/62">Filtra por necesidad, disponibilidad, margen, envío y promociones.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flow-line mx-10 h-1 rounded-full"></div>
-                            <div class="rounded-[1.5rem] border border-ink bg-ink p-5 text-white">
+                            <div class="flow-line mx-10 h-1 rounded-none"></div>
+                            <div class="rounded-none border border-white/20 bg-white p-5 text-ink">
                                 <div class="flex items-center gap-4">
-                                    <span class="flex h-11 w-11 items-center justify-center rounded-full bg-brand-primary text-lg font-black text-white">3</span>
+                                    <span class="flex h-11 w-11 items-center justify-center rounded-none bg-ink text-lg font-black text-white">3</span>
                                     <div>
                                         <h3 class="font-black">Deriva al cierre de tu e-commerce</h3>
-                                        <p class="text-sm text-white/60">El pago, logística y postventa siguen bajo tus reglas.</p>
+                                        <p class="text-sm text-ink/60">El pago, logística y postventa siguen bajo tus reglas.</p>
                                     </div>
                                 </div>
                             </div>
@@ -461,54 +707,54 @@
             </div>
         </section>
 
-        <section id="impacto" class="bg-[#FAFBF7] py-24 lg:py-32">
+        <section id="impacto" class="orb-section-light py-24 text-white lg:py-32">
             <div class="mx-auto max-w-7xl px-5 lg:px-8">
                 <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
                     <div>
-                        <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-ink/50">Impacto comercial</p>
-                        <h2 class="text-4xl font-black tracking-tight sm:text-5xl">De canal conversacional a motor de ingresos.</h2>
+                        <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-white/45">Impacto comercial</p>
+                        <h2 class="text-5xl font-black uppercase leading-none tracking-tight text-[#2C3947] sm:text-6xl">De canal conversacional a motor de ingresos.</h2>
                     </div>
-                    <p class="text-lg leading-8 text-slate-600">
+                    <p class="text-lg leading-8 text-white/58">
                         Para equipos de e-commerce, growth y revenue que necesitan justificar nuevos canales con métricas claras: atribución, eficiencia, tasa de cierre y ticket promedio.
                     </p>
                 </div>
 
                 <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-                    <div class="rounded-[1.75rem] border border-line bg-white p-7">
-                        <p class="text-5xl font-black tracking-tight">24/7</p>
+                    <div class="border-t border-white/10 p-7">
+                        <p class="text-6xl font-black uppercase tracking-tight text-[#2C3947]">24/7</p>
                         <p class="mt-4 font-bold">Venta siempre activa</p>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Captura compradores fuera del horario de atención y reduce tiempos de respuesta.</p>
+                        <p class="mt-2 text-sm leading-6 text-white/55">Captura compradores fuera del horario de atención y reduce tiempos de respuesta.</p>
                     </div>
-                    <div class="rounded-[1.75rem] border border-line bg-brand-cloud p-7">
-                        <p class="text-5xl font-black tracking-tight">+1</p>
+                    <div class="border-t border-white/10 p-7">
+                        <p class="text-6xl font-black uppercase tracking-tight text-[#2C3947]">+1</p>
                         <p class="mt-4 font-bold">Canal incremental</p>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Abre una vía de venta sin depender solo de navegación web o performance ads.</p>
+                        <p class="mt-2 text-sm leading-6 text-white/55">Abre una vía de venta sin depender solo de navegación web o performance ads.</p>
                     </div>
-                    <div class="rounded-[1.75rem] border border-ink bg-ink p-7 text-white">
-                        <p class="text-5xl font-black tracking-tight">ROI</p>
+                    <div class="border-t border-white/10 p-7">
+                        <p class="text-6xl font-black uppercase tracking-tight text-[#2C3947]">ROI</p>
                         <p class="mt-4 font-bold">Medible por conversación</p>
-                        <p class="mt-2 text-sm leading-6 text-white/60">Atribuye demanda, carritos y pagos derivados al canal Buyia.</p>
+                        <p class="mt-2 text-sm leading-6 text-white/55">Atribuye demanda, carritos y pagos derivados al canal Buyia.</p>
                     </div>
-                    <div class="rounded-[1.75rem] border border-line bg-brand-primary p-7 text-white">
-                        <p class="text-5xl font-black tracking-tight">IA</p>
+                    <div class="border-t border-white/10 p-7">
+                        <p class="text-6xl font-black uppercase tracking-tight text-[#2C3947]">IA</p>
                         <p class="mt-4 font-bold">Recomendaciones con contexto</p>
-                        <p class="mt-2 text-sm leading-6 text-white/85">Usa reglas comerciales y señales de intención para empujar mejores decisiones.</p>
+                        <p class="mt-2 text-sm leading-6 text-white/55">Usa reglas comerciales y señales de intención para empujar mejores decisiones.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="demo" class="bg-ink py-24 text-white lg:py-32">
+        <section id="demo" class="orb-section py-24 text-white lg:py-32">
             <div class="mx-auto max-w-7xl px-5 lg:px-8">
                 <div class="grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
                     <div>
-                        <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-brand-primary">Demo</p>
-                        <h2 class="text-4xl font-black tracking-tight sm:text-5xl">Mira una venta completa, desde intención hasta checkout.</h2>
+                        <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-white/45">Demo</p>
+                        <h2 class="text-5xl font-black uppercase leading-none tracking-tight text-[#C2A56D] sm:text-6xl">Mira una venta completa, desde intención hasta checkout.</h2>
                         <p class="mt-6 text-lg leading-8 text-white/70">
                             La demo muestra cómo Buyia conversa con el cliente, identifica la mejor oferta, arma el carrito y entrega un link de pago del comercio.
                         </p>
                         <div class="mt-9">
-                            <a href="#contacto" class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-primary px-7 py-4 font-bold text-white transition hover:bg-blue-600">
+                            <a href="#contacto" class="inline-flex items-center justify-center gap-2 rounded-none bg-[#C2A56D] px-7 py-4 font-black text-[#2C3947] transition hover:bg-[#B89757]">
                                 Agendar demo
                                 <i class="fa-solid fa-calendar-days text-sm"></i>
                             </a>
@@ -516,32 +762,27 @@
                     </div>
 
                     <div class="hand-demo">
-                        <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-white/10"></div>
-                        <div class="absolute bottom-6 left-6 max-w-xs rounded-3xl bg-white/90 p-5 text-ink backdrop-blur md:bottom-8 md:left-8">
-                            <p class="text-xs font-black uppercase tracking-[0.16em] text-ink/50">Demo en WhatsApp</p>
-                            <p class="mt-2 text-xl font-black">La pantalla vende mientras el cliente conversa.</p>
-                        </div>
                         <div class="demo-phone">
                             <div class="demo-phone-screen">
-                                <div class="flex items-center justify-between border-b border-line bg-white px-4 py-4 pt-6">
+                                <div class="whatsapp-header flex items-center justify-between px-4 pb-3 pt-8">
                                     <div class="flex items-center gap-3">
-                                        <div class="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-brand-primary">
+                                        <div class="flex h-9 w-9 items-center justify-center rounded-none bg-white text-ink">
                                             <i class="fa-solid fa-bolt text-sm"></i>
                                         </div>
-                                        <div>
-                                            <h3 class="text-sm font-black">Buyia Demo</h3>
-                                            <p class="text-xs font-semibold text-teal-700">Canal activo</p>
+                                        <div class="min-w-0">
+                                            <h3 class="truncate text-sm font-black">Tu agente de compras</h3>
+                                            <p class="text-xs font-semibold text-white/75">en línea</p>
                                         </div>
                                     </div>
-                                    <button id="replay-demo" class="rounded-full border border-line px-3 py-2 text-xs font-bold transition hover:bg-brand-cloud">
-                                        <i class="fa-solid fa-rotate-right mr-1"></i> Repetir
-                                    </button>
+                                    <div class="flex items-center gap-4 text-white/80">
+                                        <i class="fa-solid fa-phone text-sm"></i>
+                                        <button id="replay-demo" class="text-white/80 transition hover:text-white" aria-label="Repetir demo">
+                                            <i class="fa-solid fa-rotate-right text-sm"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div id="demo-chat-container" class="flex h-[438px] flex-col overflow-y-auto bg-brand-cloud p-4">
-                                    <div class="mb-4 mt-1 text-center text-xs font-semibold text-slate-400">Hoy</div>
-                                </div>
-                                <div class="border-t border-line bg-white p-3">
-                                    <div class="flex h-10 items-center rounded-full bg-brand-cloud px-4 text-xs font-semibold text-slate-400">Mensaje del cliente</div>
+                                <div id="demo-chat-container" class="whatsapp-chat flex h-[456px] flex-col overflow-y-auto p-4">
+                                    <div class="mb-4 mt-1 text-center text-xs font-semibold text-white/45">Hoy</div>
                                 </div>
                             </div>
                         </div>
@@ -550,18 +791,18 @@
             </div>
         </section>
 
-        <section id="contacto" class="bg-[#FAFBF7] py-24 lg:py-32">
+        <section id="contacto" class="orb-section-light py-24 text-white lg:py-32">
             <div class="mx-auto max-w-7xl px-5 lg:px-8">
-                <div class="rounded-[2rem] border border-ink/10 bg-brand-primary p-8 text-white sm:p-12 lg:p-16">
+                <div class="border-y border-white/10 py-12 text-white sm:py-16">
                     <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
                         <div>
-                            <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-white/80">Piloto comercial</p>
-                            <h2 class="max-w-3xl text-4xl font-black tracking-tight sm:text-5xl">Valida un nuevo canal de ventas sin reconstruir tu e-commerce.</h2>
-                            <p class="mt-6 max-w-2xl text-lg font-medium leading-8 text-white/90">
+                            <p class="mb-4 text-sm font-black uppercase tracking-[0.18em] text-white/45">Piloto comercial</p>
+                            <h2 class="max-w-3xl text-5xl font-black uppercase leading-none tracking-tight sm:text-6xl">Valida un nuevo canal de ventas sin reconstruir tu e-commerce.</h2>
+                            <p class="mt-6 max-w-2xl text-lg font-medium leading-8 text-white/58">
                                 Conectemos Buyia a un catálogo acotado, definamos un caso de uso y midamos demanda real en conversaciones.
                             </p>
                         </div>
-                        <a href="mailto:hola@buyia.ai?subject=Quiero%20probar%20Buyia&body=Hola%2C%20quiero%20agendar%20una%20demo%20comercial%20de%20Buyia." class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-8 py-4 text-base font-black text-white transition hover:bg-[#0B1220]">
+                        <a href="mailto:hola@buyia.ai?subject=Quiero%20probar%20Buyia&body=Hola%2C%20quiero%20agendar%20una%20demo%20comercial%20de%20Buyia." class="inline-flex items-center justify-center gap-2 rounded-none bg-[#C2A56D] px-8 py-4 text-base font-black text-[#2C3947] transition hover:bg-[#B89757]">
                             Pedir demo
                             <i class="fa-solid fa-arrow-right text-sm"></i>
                         </a>
@@ -571,22 +812,64 @@
         </section>
     </main>
 
-    <footer class="border-t border-line bg-[#FAFBF7] py-10">
-        <div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-            <div class="flex items-center gap-3">
-                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-brand-primary">
-                    <i class="fa-solid fa-bolt text-sm"></i>
-                </span>
+    <footer class="relative overflow-hidden bg-[#E8EDF2] py-16 text-ink lg:py-20">
+        <div class="mesh-grid pointer-events-none absolute inset-0 opacity-20"></div>
+        <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+            <div class="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-[1fr_auto] lg:items-end">
                 <div>
-                    <p class="font-black">Buyia</p>
-                    <p class="text-sm text-slate-500">Comercio conversacional para e-commerce</p>
+                    <a href="#" class="inline-flex items-center gap-3" aria-label="Buyia inicio">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-none bg-ink text-[#E8EDF2]">
+                            <i class="fa-solid fa-bolt text-sm"></i>
+                        </span>
+                        <span class="text-2xl font-black tracking-tight">Buyia</span>
+                    </a>
+                    <h2 class="mt-8 max-w-2xl text-4xl font-black uppercase leading-tight tracking-tight sm:text-5xl">
+                        Comercio conversacional para vender más allá del e-commerce.
+                    </h2>
+                </div>
+                <a href="mailto:hola@buyia.ai?subject=Quiero%20probar%20Buyia" class="inline-flex items-center justify-center gap-2 rounded-none bg-[#C2A56D] px-7 py-4 font-black text-[#2C3947] transition hover:bg-[#B89757]">
+                    Pedir demo
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
+            <div class="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                    <p class="text-sm font-black uppercase tracking-[0.18em] text-white/40">Producto</p>
+                    <div class="mt-5 flex flex-col gap-3 text-sm font-semibold text-white/70">
+                        <a href="#plataforma" class="hover:text-white">Plataforma</a>
+                        <a href="#broker" class="hover:text-white">Modelo broker</a>
+                        <a href="#impacto" class="hover:text-white">Impacto</a>
+                        <a href="#demo" class="hover:text-white">Demo</a>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm font-black uppercase tracking-[0.18em] text-white/40">Casos</p>
+                    <div class="mt-5 flex flex-col gap-3 text-sm font-semibold text-white/70">
+                        <span>Retail</span>
+                        <span>Marketplace</span>
+                        <span>Moda y deportes</span>
+                        <span>Tecnología</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm font-black uppercase tracking-[0.18em] text-white/40">Contacto</p>
+                    <div class="mt-5 flex flex-col gap-3 text-sm font-semibold text-white/70">
+                        <a href="mailto:hola@buyia.ai" class="hover:text-white">hola@buyia.ai</a>
+                        <span>Santiago, Chile</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm font-black uppercase tracking-[0.18em] text-white/40">Piloto</p>
+                    <p class="mt-5 text-sm leading-6 text-white/70">
+                        Conectamos catálogo, reglas y checkout para validar demanda real desde conversaciones.
+                    </p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-5 text-sm font-semibold text-slate-500">
-                <a href="#plataforma" class="hover:text-ink">Plataforma</a>
-                <a href="#broker" class="hover:text-ink">Modelo broker</a>
-                <a href="#demo" class="hover:text-ink">Demo</a>
-                <a href="mailto:hola@buyia.ai" class="hover:text-ink">Contacto</a>
+
+            <div class="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm font-semibold text-white/45 sm:flex-row sm:items-center sm:justify-between">
+                <p>© 2026 Buyia. Canal conversacional para e-commerce.</p>
+                <p>Hecho para equipos de growth, revenue y e-commerce.</p>
             </div>
         </div>
     </footer>
@@ -594,6 +877,14 @@
     <script>
         const menuButton = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const siteNav = document.getElementById('site-nav');
+
+        function updateNavChrome() {
+            siteNav.classList.toggle('is-scrolled', window.scrollY > 80);
+        }
+
+        updateNavChrome();
+        window.addEventListener('scroll', updateNavChrome, { passive: true });
 
         menuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
@@ -610,9 +901,20 @@
             { type: 'bot', text: 'Perfecto. Tengo stock para entrega esta semana. ¿Priorizas batería, peso o precio?' },
             { type: 'user', text: 'Batería y precio. Ideal con factura y despacho centralizado.' },
             { type: 'bot', text: 'La mejor opción es ProBook 14. Cumple batería, precio por volumen y despacho único.' },
-            { type: 'bot', text: 'Armé el carrito con 8 unidades, descuento corporativo y despacho a bodega. Te derivo al checkout seguro.', highlight: true },
+            {
+                type: 'bot',
+                text: 'Armé el carrito con 8 unidades, descuento corporativo y despacho a bodega.',
+                highlight: true,
+                preview: 'checkout.buyia-demo.com',
+                action: 'Ir al checkout'
+            },
             { type: 'user', text: 'Perfecto, envíame el link.' },
-            { type: 'bot', text: 'Listo: checkout.buyia-demo.com/carrito/8841. La venta queda atribuida al canal Buyia.', highlight: true }
+            {
+                type: 'bot',
+                text: 'Listo. La venta queda atribuida al canal Buyia y el pago se completa en el e-commerce.',
+                highlight: true,
+                action: 'Ver carrito'
+            }
         ];
 
         let isAnimating = false;
@@ -620,7 +922,27 @@
         function createBubble(message) {
             const bubble = document.createElement('div');
             bubble.className = `chat-bubble ${message.type === 'user' ? 'user' : 'bot'} ${message.highlight ? 'bot-highlight' : ''}`;
-            bubble.innerHTML = message.text;
+            let content = message.text;
+
+            if (message.preview) {
+                content += `
+                    <div class="chat-link-preview">
+                        <i class="fa-solid fa-link"></i>
+                        <span>${message.preview}</span>
+                    </div>
+                `;
+            }
+
+            if (message.action) {
+                content += `
+                    <div class="chat-action">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>${message.action}</span>
+                    </div>
+                `;
+            }
+
+            bubble.innerHTML = content;
             return bubble;
         }
 
@@ -628,7 +950,7 @@
             if (isAnimating) return;
 
             isAnimating = true;
-            chatContainer.innerHTML = '<div class="mb-4 mt-1 text-center text-xs font-semibold text-slate-400">Hoy</div>';
+            chatContainer.innerHTML = '<div class="mb-4 mt-1 text-center text-xs font-semibold text-white/45">Hoy</div>';
 
             for (const message of demoMessages) {
                 await new Promise((resolve) => setTimeout(resolve, 900));
